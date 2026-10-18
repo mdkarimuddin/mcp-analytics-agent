@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-analytics-agent"
+version = "0.1.0"
+description = "MCP server and agent for exploring an unfamiliar multi-table database safely: validated read-only SQL, PII blocking, approved changes with snapshot rollback"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["mcp>=1.2,<2", "anthropic>=0.40", "pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-cov>=4.0", "ruff>=0.6"]
+
+[project.scripts]
+dbagent = "dbagent.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
